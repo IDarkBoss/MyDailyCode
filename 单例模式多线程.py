@@ -1,4 +1,4 @@
-import threading, time
+import threading
 
 
 class Singleton(object):
