@@ -27,7 +27,7 @@ def check(a, temp, i, arry):
 
 
 if __name__ == "__main__":
-    arry = "{[({[()]})]}{}"
+    arry = "()"
     chara = {}
     chara["("] = ")"
     chara["["] = "]"
