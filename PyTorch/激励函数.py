@@ -4,14 +4,14 @@ import matplotlib.pyplot as plt
 
 # fake data
 x = torch.linspace(-5, 5, 200)  # x data (tensor), shape=(100, 1)
-x_np = x.numpy()  # numpy array for plotting
+x_np = x.detach().numpy()  # numpy array for plotting
 
 # following are popular activation functions
-y_relu = torch.relu(x).numpy()
-y_sigmoid = torch.sigmoid(x).numpy()
-y_tanh = torch.tanh(x).numpy()
-y_softplus = F.softplus(x).numpy()  # there's no softplus in torch
-# y_softmax = torch.softmax(x, dim=0).numpy() softmax is a special kind of activation function, it is about probability
+y_relu = F.relu(x).detach().numpy()
+y_sigmoid = torch.sigmoid(x).detach().numpy()
+y_tanh = torch.tanh(x).detach().numpy()
+y_softplus = F.softplus(x).detach().numpy()  # there's no softplus in torch
+# y_softmax = F.softmax(x, dim=0).detach().numpy() softmax is a special kind of activation function, it is about probability
 
 # plt to visualize these activation function
 plt.figure(1, figsize=(8, 6))
