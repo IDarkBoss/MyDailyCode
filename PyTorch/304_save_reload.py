@@ -12,8 +12,10 @@ import matplotlib.pyplot as plt
 # torch.manual_seed(1)    # reproducible
 
 # fake data
-x = torch.unsqueeze(torch.linspace(-1, 1, 100), dim=1)  # x data (tensor), shape=(100, 1)
-y = x.pow(2) + 0.2*torch.rand(x.size())  # noisy y data (tensor), shape=(100, 1)
+x = torch.unsqueeze(torch.linspace(-1, 1, 100),
+                    dim=1)  # x data (tensor), shape=(100, 1)
+y = x.pow(2) + 0.2 * torch.rand(
+    x.size())  # noisy y data (tensor), shape=(100, 1)
 
 # The code below is deprecated in Pytorch 0.4. Now, autograd directly supports tensors
 # x, y = Variable(x, requires_grad=False), Variable(y, requires_grad=False)
@@ -21,11 +23,8 @@ y = x.pow(2) + 0.2*torch.rand(x.size())  # noisy y data (tensor), shape=(100, 1)
 
 def save():
     # save net1
-    net1 = torch.nn.Sequential(
-        torch.nn.Linear(1, 10),
-        torch.nn.ReLU(),
-        torch.nn.Linear(10, 1)
-    )
+    net1 = torch.nn.Sequential(torch.nn.Linear(1, 10), torch.nn.ReLU(),
+                               torch.nn.Linear(10, 1))
     optimizer = torch.optim.SGD(net1.parameters(), lr=0.5)
     loss_func = torch.nn.MSELoss()
 
@@ -45,7 +44,7 @@ def save():
 
     # 2 ways to save the net
     torch.save(net1, 'net.pkl')  # save entire net
-    torch.save(net1.state_dict(), 'net_params.pkl')   # save only the parameters
+    torch.save(net1.state_dict(), 'net_params.pkl')  # save only the parameters
 
 
 def restore_net():
@@ -62,11 +61,8 @@ def restore_net():
 
 def restore_params():
     # restore only the parameters in net1 to net3
-    net3 = torch.nn.Sequential(
-        torch.nn.Linear(1, 10),
-        torch.nn.ReLU(),
-        torch.nn.Linear(10, 1)
-    )
+    net3 = torch.nn.Sequential(torch.nn.Linear(1, 10), torch.nn.ReLU(),
+                               torch.nn.Linear(10, 1))
 
     # copy net1's parameters into net3
     net3.load_state_dict(torch.load('net_params.pkl'))
@@ -78,6 +74,7 @@ def restore_params():
     plt.scatter(x.data.numpy(), y.data.numpy())
     plt.plot(x.data.numpy(), prediction.data.numpy(), 'r-', lw=5)
     plt.show()
+
 
 # save net1
 save()
