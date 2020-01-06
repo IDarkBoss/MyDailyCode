@@ -27,7 +27,7 @@ y = torch.cat((y0, y1), ).type(
 # The code below is deprecated in Pytorch 0.4. Now, autograd directly supports tensors
 # x, y = Variable(x), Variable(y)
 
-# plt.scatter(x.detach().numpy()[:, 0], x.detach().numpy()[:, 1], c=y.detach().numpy(), s=100, lw=0, cmap='RdYlGn')
+# plt.scatter(x.numpy()[:, 0], x.numpy()[:, 1], c=y.numpy(), s=100, lw=0, cmap='RdYlGn')
 # plt.show()
 
 
@@ -66,10 +66,10 @@ for t in range(100):
         # plot and show learning process
         plt.cla()
         prediction = torch.max(out, 1)[1]
-        pred_y = prediction.detach().numpy()
-        target_y = y.detach().numpy()
-        plt.scatter(x.detach().numpy()[:, 0],
-                    x.detach().numpy()[:, 1],
+        pred_y = prediction.numpy()
+        target_y = y.numpy()
+        plt.scatter(x.numpy()[:, 0],
+                    x.numpy()[:, 1],
                     c=pred_y,
                     s=100,
                     lw=0,

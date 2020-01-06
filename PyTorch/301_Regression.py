@@ -21,7 +21,7 @@ y = x.pow(2) + 0.2 * torch.rand(
 # The code below is deprecated in Pytorch 0.4. Now, autograd directly supports tensors
 # x, y = Variable(x), Variable(y)
 
-# plt.scatter(x.detach().numpy(), y.detach().numpy())
+# plt.scatter(x.numpy(), y.numpy())
 # plt.show()
 
 
@@ -57,11 +57,11 @@ for t in range(200):
     if t % 5 == 0:
         # plot and show learning process
         plt.cla()
-        plt.scatter(x.detach().numpy(), y.detach().numpy())
-        plt.plot(x.detach().numpy(), prediction.detach().numpy(), 'r-', lw=5)
+        plt.scatter(x.numpy(), y.numpy())
+        plt.plot(x.numpy(), prediction.numpy(), 'r-', lw=5)
         plt.text(0.5,
                  0,
-                 'Loss=%.4f' % loss.detach().numpy(),
+                 'Loss=%.4f' % loss.numpy(),
                  fontdict={
                      'size': 20,
                      'color': 'red'
