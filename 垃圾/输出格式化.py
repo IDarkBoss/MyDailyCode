@@ -1,6 +1,6 @@
 # f 格式化
-s = "hello"
-t = "world"
+s = "Hello World"
+t = 2020
 aa = f"{s} {t}"
 print(aa)
 
