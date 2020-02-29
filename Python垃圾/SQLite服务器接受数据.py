@@ -13,7 +13,7 @@ def hello():
 def register(username, password):
     conn = sqlite3.connect("/Handup_down.db")
     cur = conn.cursor()
-
+    print("jajjajaa")
     # 是否已存在
     sql = "select * from USERS where USERNAME='" + username + "' and PASSWORD='" + password + "'"
     cur.execute(sql)
@@ -28,6 +28,7 @@ def register(username, password):
 
 @app.route('/login/<username,password>', methods=['GET'])
 def login(username, password):
+    print("asdasds")
     conn = sqlite3.connect("/Handup_down.db")
     cur = conn.cursor()
     sql = "select * from USERS where USERNAME='" + username + "' and PASSWORD='" + password + "'"
