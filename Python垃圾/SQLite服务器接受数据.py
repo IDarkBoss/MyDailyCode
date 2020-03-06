@@ -15,15 +15,14 @@ def hello():
 def register(username, password):
     conn = sqlite3.connect("/home/lionel/Handup_down.db")
     cur = conn.cursor()
-    print("jajjajaa")
     # 是否已存在
-    sql = "select * from USERS where USERNAME='" + username + "' and PASSWORD='" + password + "'"
+    sql = f"select * from USERS where USERNAME='{username}'"
     cur.execute(sql)
     data = cur.fetchone()
     if data is not None:
         return "用户已存在"
     else:
-        sql = f"insert into USERS(USERNAME, PASSWORD, NAME, TIMES) VALUES ({username}, {password}, 'NAME', 0);"
+        sql = f"insert into USERS(USERNAME, PASSWORD, NAME, TIMES) VALUES ('{username}', '{password}', 'NAME', 0);"
         cur.execute(sql)
         conn.commit()
         conn.close()
@@ -40,10 +39,10 @@ def login(username, password):
     data = cur.fetchone()
     conn.close()
 
-    if len(data) > 0:
-        return True
+    if data is not None:
+        return "登录成功"
     else:
-        return False
+        return "账号密码错误"
 
 
 if __name__ == '__main__':
