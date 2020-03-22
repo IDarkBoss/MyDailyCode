@@ -63,8 +63,8 @@ class RNN(nn.Module):
             input_size=INPUT_SIZE,
             hidden_size=64,  # rnn hidden unit
             num_layers=1,  # number of rnn layer
-            batch_first=
-            True,  # input & output will has batch size as 1s dimension. e.g. (batch, time_step, input_size)
+            batch_first=# input & output will has batch size as 1s dimension. e.g. (batch, time_step, input_size)
+            True,
         )
 
         self.out = nn.Linear(64, 10)

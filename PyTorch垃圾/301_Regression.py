@@ -58,10 +58,10 @@ for t in range(200):
         # plot and show learning process
         plt.cla()
         plt.scatter(x.numpy(), y.numpy())
-        plt.plot(x.numpy(), prediction.numpy(), 'r-', lw=5)
+        plt.plot(x.detach().numpy(), prediction.detach().numpy(), 'r-', lw=5)
         plt.text(0.5,
                  0,
-                 'Loss=%.4f' % loss.numpy(),
+                 'Loss=%.4f' % loss.detach().numpy(),
                  fontdict={
                      'size': 20,
                      'color': 'red'
