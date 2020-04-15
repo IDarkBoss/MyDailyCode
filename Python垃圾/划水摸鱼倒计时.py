@@ -9,11 +9,8 @@ def calculateTimeDiff():
 
     offWork = str(year) + "-" + str(month) + "-" + str(
         day) + " " + "18" + ":" + "00" + ":" + "00"
-    try:
-        # 将字符串转换为datetime
-        offWork = datetime.datetime.strptime(offWork, "%Y-%m-%d %H:%M:%S")
-    except:
-        return "输入日期格式不符合规则,格式必须为 XXXX-XX-XX XX:XX:XX"
+
+    offWork = datetime.datetime.strptime(offWork, "%Y-%m-%d %H:%M:%S")
 
     # 获取当前的datetime
     now = datetime.datetime.now()
