@@ -14,10 +14,13 @@ def calculateTimeDiff():
 
     # 获取当前的datetime
     now = datetime.datetime.now()
+
     # 计算时间差
     difference = offWork - now
+
     # 获取相差的秒数
     seconds = difference.seconds
+
     # 间隔分钟数:
     minutes = seconds / 60
 
