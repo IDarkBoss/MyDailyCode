@@ -22,13 +22,13 @@ def calculateTimeDiff():
     seconds = difference.seconds
 
     # 间隔分钟数:
-    minutes = seconds / 60
+    minutes = math.ceil(seconds / 60)
 
     return minutes
 
 
 if __name__ == "__main__":
-    minutes = math.ceil(calculateTimeDiff())
+    minutes = calculateTimeDiff()
     remainingTime = ("还有" + str(minutes) + "分钟下班啦")
 
     print(remainingTime)
