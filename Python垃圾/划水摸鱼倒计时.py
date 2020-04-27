@@ -45,8 +45,8 @@ if __name__ == "__main__":
 
     statu, minutes = calculateTimeDiff()
     if statu == "before":
-        remainingTime = "还有" + f"\033[1;35m{str(minutes)}\033[0m" + "分钟就要下班啦，小老弟！"
+        remainingTime = "还有" + f"\033[1;33m{str(minutes)}\033[0m" + "分钟就要下班啦，小老弟！"
         print(remainingTime)
     else:
-        beyondTime = "你都下班" + f"\033[1;35m{str(minutes)}\033[0m" + "分钟啦，小老弟！"
+        beyondTime = "你都下班" + f"\033[1;33m{str(minutes)}\033[0m" + "分钟啦，小老弟！"
         print(beyondTime)
