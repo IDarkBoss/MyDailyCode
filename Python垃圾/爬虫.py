@@ -1,6 +1,6 @@
-import requests, shutil, random  # 首先import requests和shutils
+import requests, random  # 首先import requests和shutils
 from bs4 import BeautifulSoup  # 再import我们刚才说的BS
-import codecs, urllib, json, time
+import time
 
 
 def download(proxy, user_agents, page):  # 这个函数用来寻找，下载，保存图片
