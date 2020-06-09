@@ -15,6 +15,7 @@ import java.util.List;
 @Slf4j
 public class XmlParser {
     public static void main(String[] args) {
+        //实例化
         XmlParser xmlParser = new XmlParser();
         TradeInspectionResultBO result = xmlParser.parseXml();
         System.out.println(result);
