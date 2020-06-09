@@ -7,25 +7,32 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.File;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public class xmlParser {
+public class XmlParser {
     public static void main(String[] args) {
-        try {
-            File input = new File("example.xml");
-            Document document = Jsoup.parse(input, "UTF-8", "http://example.com/");
-            TradeInspectionResultBO result = parseXml(document);
-            System.out.println(result);
-        } catch (Exception e) {
-            log.error("XML解析出错", e);
-        }
+        XmlParser xmlParser = new XmlParser();
+        TradeInspectionResultBO result = xmlParser.parseXml();
+        System.out.println(result);
     }
 
-    private static TradeInspectionResultBO parseXml(Document document) {
+    private TradeInspectionResultBO parseXml() {
+        Document document = null;
+        try {
+            String path = this.getClass().getResource("/example.xml").getPath();
+            path = URLDecoder.decode(path, StandardCharsets.UTF_8);
+            File input = new File(path);
+            document = Jsoup.parse(input, "UTF-8", "http://example.com/");
+        } catch (Exception e) {
+            log.error("读取XML文件出错", e);
+        }
         TradeInspectionResultBO result = new TradeInspectionResultBO();
         List<InspectionResultBO> riskMessageList = new ArrayList<>();
+
         try {
             if (document != null) {
                 //获取元素
@@ -64,7 +71,7 @@ public class xmlParser {
     }
 
     @Data
-    public static class TradeInspectionResultBO {
+    public class TradeInspectionResultBO {
         private List<InspectionResultBO> riskMessages;
         private String serialNumber;
         /**
@@ -75,7 +82,7 @@ public class xmlParser {
     }
 
     @Data
-    public static class InspectionResultBO {
+    public class InspectionResultBO {
         /**
          * 审批项目名称
          */
