@@ -1,11 +1,11 @@
-package com.DarkBoss;
+package com.darkboss;
 
 import java.time.Duration;
 import java.time.LocalTime;
 
 /**
  * @author Li Ang
- * @create 2020/4/27 下午 3:44
+ * @date 2020/4/27 下午 3:44
  */
 public class getTime {
     public static void main(String[] args) {
