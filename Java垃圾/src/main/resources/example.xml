@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page>
+    <RISK_RESULT>
+        <RISK_ROW SERIAL_NUMBER="BO2020052600036" ERROR_LEVEL="0">
+            <STEP_MSG>
+                审批单异动时间:2020/05/26 16:37:39:12537400
+                对审批单编号为单笔批2000的交易进行试算.
+                本审批单最高审批阶段为 交易员（审批发起）
+                审批流程为 交易员（审批发起）.
+                目前审批阶段为 交易员（审批发起） ,下一审批阶段为 审批完成 .
+            </STEP_MSG>
+            <CURRENT_STAGE>
+                0
+            </CURRENT_STAGE>
+            <RISK_MSG>
+                <NAME>
+                    估值收益率偏离度检核
+                </NAME>
+                <CNTY_NAME>
+                </CNTY_NAME>
+                <BEFORE>
+                </BEFORE>
+                <AFTER>
+                </AFTER>
+                <LIMIT>
+                </LIMIT>
+                <PASS>
+                    1
+                </PASS>
+                <REMARK>
+                    该类债券不检核
+                </REMARK>
+            </RISK_MSG>
+            <RISK_MSG>
+                <NAME>
+                    哦吼
+                </NAME>
+                <CNTY_NAME>
+                </CNTY_NAME>
+                <BEFORE>
+                </BEFORE>
+                <AFTER>
+                </AFTER>
+                <LIMIT>
+                </LIMIT>
+                <PASS>
+                    1
+                </PASS>
+                <REMARK>
+                    该类债券不检核
+                </REMARK>
+            </RISK_MSG>
+        </RISK_ROW>
+    </RISK_RESULT>
+</Page>
