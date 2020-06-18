@@ -17,6 +17,9 @@ def multicore():
     multi_res = [pool.apply_async(job, (i, )) for i in range(10)]
     print([res.get() for res in multi_res])
 
+    pool.close()
+    pool.join()
+
 
 if __name__ == '__main__':
     multicore()
