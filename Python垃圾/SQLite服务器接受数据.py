@@ -20,6 +20,7 @@ def register(username, password):
     cur.execute(sql)
     data = cur.fetchone()
     if data is not None:
+        conn.close()
         return "用户已存在"
     else:
         sql = f"insert into USERS(USERNAME, PASSWORD, NAME, TIMES) VALUES ('{username}', '{password}', 'NAME', 0);"
