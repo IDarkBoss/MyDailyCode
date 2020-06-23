@@ -5,8 +5,10 @@ import java.time.Duration;
 import java.time.LocalTime;
 
 /**
+ * <h3>计算摸鱼时间</h3>
+ *
  * @author Li Ang
- * @date 2020/4/27 下午 3:44
+ * @date 2020-4-27 15:44
  */
 public class GetTime {
     public static void main(String[] args) {

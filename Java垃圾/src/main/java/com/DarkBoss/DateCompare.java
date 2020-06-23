@@ -6,7 +6,6 @@ import java.util.Date;
 
 /**
  * <h3>计算日期间隔</h3>
- * <p></p>
  *
  * @author Li Ang
  * @date 2020-06-19 15:54
@@ -19,6 +18,12 @@ public class DateCompare {
         dateCompare.calDuration("20200101", "20200606");
     }
 
+    /**
+     * 计算间隔
+     *
+     * @param fromDay 起始日
+     * @param toDay   目标日
+     */
     public void calDuration(final String fromDay, final String toDay) {
         try {
             String today = dateFormat.format(new Date());
@@ -48,6 +53,12 @@ public class DateCompare {
         }
     }
 
+    /**
+     * 日期 String 转 Date
+     *
+     * @param inputDate String
+     * @return Date
+     */
     public static Date toDate(final String inputDate) {
         try {
             return dateFormat.parse(inputDate);

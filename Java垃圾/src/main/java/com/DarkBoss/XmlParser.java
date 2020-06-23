@@ -12,6 +12,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <h3>解析XML</h3>
+ *
+ * @author Li Ang
+ * @date 2020-06-19 12:54
+ */
 @Slf4j
 public class XmlParser {
     public static void main(String[] args) {
