@@ -30,7 +30,7 @@ public class XmlParser {
     private TradeInspectionResultBO parseXml() {
         Document document = null;
         try {
-            String path = this.getClass().getResource("/example.xml").getPath();
+            String path = getClass().getResource("/example.xml").getPath();
             path = URLDecoder.decode(path, StandardCharsets.UTF_8);
             File input = new File(path);
             document = Jsoup.parse(input, "UTF-8", "http://example.com/");
@@ -77,8 +77,11 @@ public class XmlParser {
         return result;
     }
 
+//    public Record TradeInspectionResultBO(List<InspectionResultBO> riskMessages, String serialNumber, Integer errorLevel, String stepMsg) {
+//    }
+
     @Data
-    public class TradeInspectionResultBO {
+    private static class TradeInspectionResultBO {
         private List<InspectionResultBO> riskMessages;
         private String serialNumber;
         /**
@@ -89,7 +92,7 @@ public class XmlParser {
     }
 
     @Data
-    public class InspectionResultBO {
+    private static class InspectionResultBO {
         /**
          * 审批项目名称
          */
@@ -159,46 +162,42 @@ public class XmlParser {
          * 检核内容
          */
         private String inspectionContent;
-
-        public InspectionResultBO() {
-        }
-
-        public String getInspectionContent() {
-            return inspectionContent == null ? "" : inspectionContent;
-        }
-
         /**
          * 检核内容ID
          */
         private String inspectionContentId;
-
-        public String getInspectionContentId() {
-            return inspectionContentId == null ? "" : inspectionContentId;
-        }
-
         /**
          * 单位
          */
         private String unit;
-
         /**
          * 统计口径
          */
         private Integer cumulative;
-
         /**
          * 是否符合检核范围
          */
         private Short inScope;
-
         /**
          * 交易编号
          */
         private String serialNumber;
-
         /**
          * 应用场景
          */
         private Integer scenario;
+
+        InspectionResultBO() {
+        }
+
+        private String getInspectionContent() {
+            return inspectionContent == null ? "" : inspectionContent;
+        }
+
+        private String getInspectionContentId() {
+            return inspectionContentId == null ? "" : inspectionContentId;
+        }
     }
+
+
 }

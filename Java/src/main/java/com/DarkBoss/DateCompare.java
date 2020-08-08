@@ -11,11 +11,27 @@ import java.util.Date;
  * @date 2020-06-19 15:54
  */
 public class DateCompare {
-    public static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMdd");
 
     public static void main(String[] args) {
         DateCompare dateCompare = new DateCompare();
         dateCompare.calDuration("20200101", "20200606");
+    }
+
+    /**
+     * 日期 String 转 Date
+     *
+     * @param inputDate String
+     * @return Date
+     */
+    private Date toDate(String inputDate) {
+        try {
+            return DATE_FORMAT.parse(inputDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     /**
@@ -24,9 +40,9 @@ public class DateCompare {
      * @param fromDay 起始日
      * @param toDay   目标日
      */
-    public void calDuration(final String fromDay, final String toDay) {
+    private void calDuration(String fromDay, String toDay) {
         try {
-            String today = dateFormat.format(new Date());
+            String today = DATE_FORMAT.format(new Date());
             if (fromDay.compareTo(toDay) > 0) {
                 System.out.println("起始日期必须小于等于结束日期");
             }
@@ -51,21 +67,5 @@ public class DateCompare {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * 日期 String 转 Date
-     *
-     * @param inputDate String
-     * @return Date
-     */
-    public static Date toDate(final String inputDate) {
-        try {
-            return dateFormat.parse(inputDate);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-
     }
 }
