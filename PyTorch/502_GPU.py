@@ -31,9 +31,9 @@ train_loader = Data.DataLoader(dataset=train_data,
 test_data = torchvision.datasets.MNIST(root='./mnist/', train=False)
 
 # !!!!!!!! Change in here !!!!!!!!! #
-test_x = torch.unsqueeze(test_data.test_data, dim=1).type(
+test_x = torch.unsqueeze(test_data.data, dim=1).type(
     torch.FloatTensor)[:2000].cuda() / 255.  # Tensor on GPU
-test_y = test_data.test_labels[:2000].cuda()
+test_y = test_data.targets[:2000].cuda()
 
 
 class CNN(nn.Module):

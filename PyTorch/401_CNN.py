@@ -147,8 +147,10 @@ if __name__ == "__main__":
             if step % 50 == 0:
                 test_output, last_layer = cnn(test_x)
                 pred_y = torch.max(test_output, 1)[1].detach().numpy()
-                accuracy = float((pred_y == test_y.detach().numpy()
-                                  ).astype(int).sum()) / float(test_y.size(0))
+                accuracy = float(
+                    (pred_y
+                     == test_y.detach().numpy()).astype(int).sum()) / float(
+                         test_y.size(0))
                 print('Epoch: ', epoch,
                       '| train loss: %.4f' % loss.detach().numpy(),
                       '| test accuracy: %.2f' % accuracy)

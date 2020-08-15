@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # torch.manual_seed(1)    # reproducible
 
 LR = 0.01
-BATCH_SIZE = 40000  # 20
+BATCH_SIZE = 40000000  # 20
 EPOCH = 80  # 80
 
 # fake dataset
@@ -27,12 +27,11 @@ y = x.pow(2) + 0.1 * torch.normal(torch.zeros(*x.size()))
 
 # put dateset into torch dataset
 torch_dataset = Data.TensorDataset(x, y)
-loader = Data.DataLoader(
-    dataset=torch_dataset,
-    batch_size=BATCH_SIZE,
-    shuffle=True,
-    num_workers=2,
-)
+loader = Data.DataLoader(dataset=torch_dataset,
+                         batch_size=BATCH_SIZE,
+                         shuffle=True,
+                         num_workers=8,
+                         pin_memory=True)
 
 
 # default network
