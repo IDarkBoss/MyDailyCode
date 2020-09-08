@@ -18,7 +18,8 @@ public class FishFarming {
     private static void fishFarming() {
         DateTime now = DateUtil.date();
         DateTime offWork = DateUtil.parse(DateUtil.today() + " 18:00:00");
-        long compare = DateUtil.between(now, offWork, DateUnit.MINUTE, true);
-        System.out.println("还有" + compare + "分钟下班！");
+        long compare = DateUtil.between(now, offWork, DateUnit.SECOND, true);
+        double minutes = Math.ceil(compare / 60.0);
+        System.out.println("还有" + (int) minutes + "分钟下班！");
     }
 }
