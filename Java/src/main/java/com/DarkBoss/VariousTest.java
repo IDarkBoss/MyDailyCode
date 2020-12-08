@@ -43,7 +43,7 @@ public class VariousTest {
      * finalTest
      */
     public static void finalTest() {
-        final Map<String, String> map = new HashMap<>(1);
+        Map<String, String> map = new HashMap<>(1);
         map.put("1", "1");
         map.put("2", "2");
         System.out.println(map);
@@ -60,7 +60,7 @@ public class VariousTest {
     /**
      * JsonObject
      */
-    public static void jsonObjectTest() {
+    private static void jsonObjectTest() {
         ForwardData object = new ForwardData();
         object.setDealDate(new Date());
         object.setSpotDate(new Date());
@@ -75,22 +75,22 @@ public class VariousTest {
     }
 
     @Data
-    public static class ForwardBaseBO implements Serializable {
+    private static class ForwardBaseBO implements Serializable {
         private static final long serialVersionUID = 1L;
         private Integer cusNumber;
         private Date valuationDate;
         private ForwardData data;
     }
 
-    public static class ForwardData {
+    private static class ForwardData {
         private Date dealDate;
         private Date spotDate;
 
-        public void setDealDate(Date dealDate) {
+        void setDealDate(Date dealDate) {
             this.dealDate = dealDate;
         }
 
-        public void setSpotDate(Date spotDate) {
+        void setSpotDate(Date spotDate) {
             this.spotDate = spotDate;
         }
     }
