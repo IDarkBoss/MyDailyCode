@@ -30,8 +30,8 @@ public class XmlParser {
     private TradeInspectionResultBO parseXml() {
         Document document = null;
         try {
-            String path = getClass().getResource("/example.xml").getPath();
-            path = URLDecoder.decode(path, StandardCharsets.UTF_8);
+            String path = getClass().getResource("/com/darkboss/resources/example.xml").getPath();
+            path = URLDecoder.decode(path, StandardCharsets.UTF_8.toString());
             File input = new File(path);
             document = Jsoup.parse(input, "UTF-8", "http://example.com/");
         } catch (Exception e) {
