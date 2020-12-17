@@ -1,13 +1,11 @@
 package com.darkboss;
 
-import cn.hutool.json.JSONString;
 import com.alibaba.fastjson.JSONObject;
 import com.darkboss.resources.ForwardBaseBO;
 import com.darkboss.resources.ForwardData;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,8 +14,6 @@ import java.util.Optional;
 
 @Slf4j
 public class VariousTestTest {
-    @Resource
-    private JSONString jsonString;
 
 
     /**
