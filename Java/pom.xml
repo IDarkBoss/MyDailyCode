@@ -18,6 +18,30 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.hupubao</groupId>
+                <artifactId>dockit-maven-plugin</artifactId>
+                <version>2.1.4.RELEASE</version>
+                <configuration>
+                    <templateCharset>UTF-8</templateCharset>
+                    <singleOutDir>false</singleOutDir>
+                    <outDir>${project.build.directory}/dockit</outDir>
+                    <!-- 自动打开生成的文档目录，默认false -->
+                    <autoOpenOutDir>true</autoOpenOutDir>
+                    <!-- 这里可以选择自定义模版 -->
+                    <!--<template>${basedir}/src/main/resources/dockit/TEMPLATE.MD</template>-->
+                </configuration>
+                <!--
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>dockit</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                -->
+            </plugin>
         </plugins>
     </build>
 
@@ -48,7 +72,6 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>[1.2.17,)</version>
-            <type>zip</type>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -76,6 +99,12 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>[30.1-jre,)</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hupubao</groupId>
+            <artifactId>dockit-maven-plugin</artifactId>
+            <version>2.1.4.RELEASE</version>
+            <type>maven-plugin</type>
         </dependency>
     </dependencies>
 </project>
