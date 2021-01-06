@@ -26,7 +26,7 @@ public class HashJoin {
         sw.stop();
 
         sw.start("setTest");
-        List<Object> result2 = setTest(list);
+        List<Integer> result2 = setTest(list);
         result2.forEach(System.out::println);
         sw.stop();
 
@@ -52,7 +52,7 @@ public class HashJoin {
         return table;
     }
 
-    private static List<Object> setTest(List<Map<String, Integer>> list) {
+    private static List<Integer> setTest(List<Map<String, Integer>> list) {
         List<Map<String, Integer>> list2 = new ArrayList<>(list);
         Set<Integer> set = new HashSet<>();
         for (Map<String, Integer> object : list) {
@@ -62,7 +62,7 @@ public class HashJoin {
             set.add(object.get("name"));
         }
 
-        return Arrays.asList(set.toArray());
+        return new ArrayList<>(set);
     }
 
     private static List<Integer> forTest(List<Map<String, Integer>> list) {
@@ -71,7 +71,7 @@ public class HashJoin {
 
         for (Map<String, Integer> o1 : list) {
             for (Map<String, Integer> o2 : list2) {
-                if (o1.get("name").equals(o2.get("name"))) {
+                if (!o1.get("name").equals(o2.get("name"))) {
                     result.add(o1.get("name"));
                     break;
                 }
