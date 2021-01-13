@@ -82,11 +82,11 @@ public class VariousTestTest {
 
     @Test
     public void mergeTest() {
-        List<String> currencys = Arrays.asList("CNY", "USD", "CNY", "EUR", "AAA");
+        List<String> currencies = Arrays.asList("CNY", "USD", "CNY", "EUR", "AAA");
         List<Integer> values = Arrays.asList(100, 100, 100, 100, 100);
         Map<String, Integer> resultMap = new HashMap<>(16);
         for (int i = 0; i <= 4; i++) {
-            String currency = currencys.get(i);
+            String currency = currencies.get(i);
             Integer value = values.get(i);
 
             resultMap.merge(currency, value, Integer::sum);
