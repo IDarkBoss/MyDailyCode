@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 public class VariousTestTest {
@@ -81,5 +78,20 @@ public class VariousTestTest {
         String length = point.substring(0, point.length() - 1);
         String unit = point.substring(point.length() - 1);
         System.out.println("Gasda");
+    }
+
+    @Test
+    public void mergeTest() {
+        List<String> currencys = Arrays.asList("CNY", "USD", "CNY", "EUR", "AAA");
+        List<Integer> values = Arrays.asList(100, 100, 100, 100, 100);
+        Map<String, Integer> resultMap = new HashMap<>(16);
+        for (int i = 0; i <= 4; i++) {
+            String currency = currencys.get(i);
+            Integer value = values.get(i);
+
+            resultMap.merge(currency, value, Integer::sum);
+        }
+
+        System.out.println(resultMap);
     }
 }
