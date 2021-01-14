@@ -112,3 +112,4 @@ venv.bak/
 *.factorypath
 *.project
 .settings/
+Java/JavaRubbish.iml
