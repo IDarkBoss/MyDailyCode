@@ -19,8 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2021-01-14 17:12
  */
 public class BeanCopyUtil {
-    private BeanCopyUtil() {
-    }
+    private BeanCopyUtil() { }
 
     private static ThreadLocal<ObjenesisStd> objenesisStdThreadLocal = ThreadLocal.withInitial(ObjenesisStd::new);
     private static ConcurrentHashMap<Class<?>, ConcurrentHashMap<Class<?>, BeanCopier>> cache = new ConcurrentHashMap<>();
@@ -45,7 +44,7 @@ public class BeanCopyUtil {
         ObjenesisStd objenesisStd = objenesisStdThreadLocal.get();
         for (Object source : sources) {
             if (source == null) {
-                throw new ApiException(SysCode.SYS2000);
+                return null;
             }
             T newInstance = objenesisStd.newInstance(target);
             BeanCopier beanCopier = getCacheBeanCopier(source.getClass(), target);
