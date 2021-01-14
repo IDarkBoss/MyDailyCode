@@ -1,9 +1,12 @@
 package com.darkboss.utils;
 
 
-import cn.hutool.core.bean.copier.BeanCopier;
+import org.springframework.cglib.beans.BeanCopier;
+import org.springframework.cglib.beans.BeanMap;
+import org.springframework.objenesis.ObjenesisStd;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
