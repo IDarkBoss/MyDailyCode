@@ -1,7 +1,8 @@
 # Java
-.idea
-out
-.iml
+.idea/
+out/
+*.iml
+target/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -113,3 +114,4 @@ venv.bak/
 *.project
 .settings/
 Java/JavaRubbish.iml
+Java/Java垃圾.iml
