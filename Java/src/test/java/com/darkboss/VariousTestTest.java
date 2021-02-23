@@ -94,4 +94,18 @@ public class VariousTestTest {
 
         System.out.println(resultMap);
     }
+
+    @Test
+    public void subString() {
+        String serialNumber = "2202102015000800044";
+        if (serialNumber.length() == 19 && serialNumber.startsWith("2")) {
+            String string = serialNumber.substring(9, 2000);
+            if (string.endsWith("0")) {
+                string = string.substring(0, 1);
+            }
+            int productId = Integer.parseInt(string);
+            System.out.println(string);
+            System.out.println(productId);
+        }
+    }
 }
