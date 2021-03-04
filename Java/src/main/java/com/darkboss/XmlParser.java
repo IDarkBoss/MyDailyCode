@@ -77,9 +77,6 @@ public class XmlParser {
         return result;
     }
 
-//    public Record TradeInspectionResultBO(List<InspectionResultBO> riskMessages, String serialNumber, Integer errorLevel, String stepMsg) {
-//    }
-
     @Data
     private static class TradeInspectionResultBO {
         private List<InspectionResultBO> riskMessages;

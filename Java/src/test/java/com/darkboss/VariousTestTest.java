@@ -1,11 +1,20 @@
 package com.darkboss;
 
+import cn.hutool.core.date.StopWatch;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.darkboss.resources.ForwardBaseBO;
 import com.darkboss.resources.ForwardData;
+import com.darkboss.utils.FileUtils;
+import com.darkboss.utils.ListUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.skywalking.apm.toolkit.opentracing.SkywalkingSpan;
+import org.apache.skywalking.apm.toolkit.opentracing.SkywalkingSpanBuilder;
+import org.apache.skywalking.apm.toolkit.opentracing.SkywalkingTracer;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -108,4 +117,64 @@ public class VariousTestTest {
             System.out.println(productId);
         }
     }
+
+    @Test
+    public void stopWatchTest() {
+        StopWatch sw1 = new StopWatch("1层");
+        StopWatch sw2 = new StopWatch("2层");
+        sw1.start("sw测试");
+        for (int i = 0; i < 100; i++) {
+            sw2.start("测试" + i);
+            sw2.stop();
+        }
+        sw1.stop();
+        log.info(sw1.prettyPrint());
+        log.info(sw2.prettyPrint());
+    }
+
+    @Test
+    public void skyWalkingTest() {
+        SkywalkingTracer tracer = new SkywalkingTracer();
+        SkywalkingSpanBuilder builder = (SkywalkingSpanBuilder) tracer.buildSpan("SkyWalking测试");
+        SkywalkingSpan span = (SkywalkingSpan) builder.startManual();
+
+        span.setTag("1节点", 1);
+        BigDecimal sum = BigDecimal.ZERO;
+        for (int i = 0; i < 10000; i++) {
+            BigDecimal decimal = BigDecimal.valueOf(i);
+            sum = sum.add(decimal.remainder(new BigDecimal("3")));
+        }
+        span.setTag("2节点", 2);
+        span.finish();
+    }
+
+    @Test
+    public void readFileTest() {
+        String yesterday = FileUtils.readFile("C:\\Users\\Lionel\\Desktop\\1.txt");
+        String today = FileUtils.readFile("C:\\Users\\Lionel\\Desktop\\2.txt");
+        String occupyString = FileUtils.readFile("C:\\Users\\Lionel\\Desktop\\今天.txt");
+
+        List<String> yesList = Arrays.asList(yesterday.split(","));
+        List<String> todayList = Arrays.asList(today.split(","));
+
+        List<String> aaa = ListUtils.notCross(yesList, todayList);
+        List<String> bbb = ListUtils.notCross(todayList, yesList);
+        FileUtils.writeFile(aaa.toString(), "C:\\Users\\Lionel\\Desktop\\今天少的.txt");
+        FileUtils.writeFile(bbb.toString(), "C:\\Users\\Lionel\\Desktop\\今天多的.txt");
+        Map<String, JSONArray> occupy = JSON.parseObject(occupyString, Map.class);
+
+        BigDecimal total = BigDecimal.ZERO;
+        // for (Map.Entry<String, JSONArray> entry : occupy.entrySet()) {
+        //     String number = entry.getKey();
+        //     if (!allList.contains(number)) {
+        //         System.out.println(number);
+        //     }
+        //
+        //     JSONArray array = entry.getValue();
+        //     BigDecimal value = (BigDecimal) ((JSONObject) array.get(0)).get("value");
+        //     total = total.add(value);
+        // }
+        System.out.println(total);
+    }
+
 }
