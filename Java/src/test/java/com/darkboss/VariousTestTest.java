@@ -17,6 +17,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.*;
 
 @Slf4j
 public class VariousTestTest {
@@ -146,6 +147,28 @@ public class VariousTestTest {
         }
         span.setTag("2节点", 2);
         span.finish();
+    }
+
+    @Test
+    public void FutureTest() {
+        List<String> result = new ArrayList<>();
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(0, 5, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+        Callable<List<String>> callable = () -> {
+            try {
+                log.info("交易编号查占额");
+                // do something
+                return new ArrayList<>();
+            } catch (Exception e) {
+                log.error("交易编号查占额时出错", e);
+                return null;
+            }
+        };
+        Future<List<String>> futureResult = executor.submit(callable);
+        try {
+            result = futureResult.get(90, TimeUnit.SECONDS);
+        } catch (Exception e) {
+            log.error("交易编号查占额时出错", e);
+        }
     }
 
     @Test
