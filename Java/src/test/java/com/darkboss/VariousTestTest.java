@@ -200,4 +200,26 @@ public class VariousTestTest {
         System.out.println(total);
     }
 
+    @Test
+    public void intersection() {
+        List<String> todaySerialNumber = Arrays.asList("XMS:FX_FORWARD:2202103172000800002",
+                                                       "XMS:FX_FORWARD:2202103172000800004",
+                                                       "XMS:FX_OPTION:2202103174000800009",
+                                                       "XMS:FX_OPTION:2202103174000800010",
+                                                       "XMS:FX_FORWARD:2202103172000800008");
+        List<String> list = new ArrayList<>();
+
+        List<String> tradeTypes = Collections.singletonList("FX_OPTION");
+        for (String serialNumber : todaySerialNumber) {
+            String tradeType = Arrays.asList(serialNumber.split(":")).get(1);
+            if (tradeTypes.contains(tradeType)) {
+                list.add(serialNumber);
+            }
+        }
+        System.out.println(list);
+
+        
+    }
+
+
 }
