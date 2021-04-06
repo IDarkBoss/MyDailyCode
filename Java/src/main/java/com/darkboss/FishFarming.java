@@ -11,13 +11,15 @@ import cn.hutool.core.date.DateUtil;
  * @date 2020-09-05 23:52
  **/
 public class FishFarming {
+    private static final String OFF_WORK_TIME = "18:00:00";
+
     public static void main(String[] args) {
         fishFarming();
     }
 
     private static void fishFarming() {
         DateTime now = DateUtil.date();
-        DateTime offWork = DateUtil.parse(DateUtil.today() + " 18:00:00");
+        DateTime offWork = DateUtil.parse(DateUtil.today() + " " + OFF_WORK_TIME);
         long compare = DateUtil.between(now, offWork, DateUnit.SECOND, true);
         double minutes = Math.ceil(compare / 60.0);
         System.out.println("还有" + (int) minutes + "分钟下班！");
